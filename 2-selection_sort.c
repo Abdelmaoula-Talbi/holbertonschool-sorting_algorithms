@@ -9,24 +9,25 @@
 void selection_sort(int *array, size_t size)
 {
 /*	const int *sorted;*/
-	int tmp;
-	size_t i, k/*, j*/;
+	int min_val;
+	size_t i, k, l;
 
-	for (i = 0; i < size - 1; i++)
+	for (i = 0; i < size; i++)
 	{
+		min_val = array[i];
 		for (k = i + 1; k < size; k++)
 		{
-			if (array[i] > array[k])
+			if (min_val > array[k])
 			{
-				tmp = array[i];
-				array[i] = array[k];
-				array[k] = tmp;
+				min_val = array[k];
+				l = k;
 			}
 		}
-		/*for (j = 0; j < size - 1; j++)
+		if (array[i] != min_val)
 		{
-			sorted[j] = array[i];
-		}*/
-		print_array(array, size);
+			array[l] = array[i];
+			array[i] = min_val;
+			print_array(array, size);
+		}
 	}
 }
